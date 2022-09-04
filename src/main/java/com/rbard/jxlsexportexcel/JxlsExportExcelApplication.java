@@ -90,7 +90,6 @@ public class JxlsExportExcelApplication {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=invoice.xlsx");
         httpHeaders.add(HttpHeaders.CONTENT_LENGTH, String.valueOf(byteOutputTemplate.length));
-        httpHeaders.add("demo", "value");
 
         return new ResponseEntity<>(new InputStreamResource(inputStream), httpHeaders,
                 HttpStatus.OK);
