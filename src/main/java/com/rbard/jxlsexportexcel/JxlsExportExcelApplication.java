@@ -88,8 +88,9 @@ public class JxlsExportExcelApplication {
         InputStream inputStream = new ByteArrayInputStream(byteOutputTemplate);
 
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=invoice.xlsx");
-        httpHeaders.add(HttpHeaders.CONTENT_LENGTH, String.valueOf(byteOutputTemplate.length));
+        httpHeaders.set(HttpHeaders.CONTENT_TYPE, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+        httpHeaders.set(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=invoice.xlsx");
+        httpHeaders.set(HttpHeaders.CONTENT_LENGTH, String.valueOf(byteOutputTemplate.length));
 
         return new ResponseEntity<>(new InputStreamResource(inputStream), httpHeaders,
                 HttpStatus.OK);
